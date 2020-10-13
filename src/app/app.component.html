@@ -1,0 +1,27 @@
+<div class="app">
+  <h1>Unsplash Image Gallery!</h1>
+  <form>
+    <input
+      type="text"
+      placeholder="Search Unsplash"
+      [(ngModel)]="query"
+      [ngModelOptions]="{standalone: true}"
+      (ngModelChange)="searchImagesByQuery()"
+    />
+  </form>
+  <div class="image-grid">
+    <a 
+     *ngFor="let image of images"
+     class="image"
+     [href]="image.links.html"
+     target="_blank"
+     rel="nooper noreferrer"
+    >
+      <img
+        [src]="image.urls.regular"
+        [alt]="image.alt_description"
+       />
+    </a>
+    <h4 *ngIf="loading">Loading...</h4>
+  </div>
+</div>
